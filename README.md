@@ -48,6 +48,7 @@ class AppAsset extends AssetBundle {
 
 ### 禁止其他挂件使用bootstrap 3
 - 控制器
+
 class BaseController extends Controller
 {
 
@@ -73,6 +74,7 @@ class BaseController extends Controller
 };
 
 - 配置
+
 config/mian.php
 
 'components' => [
