@@ -15,13 +15,13 @@ ZUI项目网站： http://zui.sexy/ 。
 Either run
 
 ```
-$ php composer.phar require yangshihe/zui "@dev"
+$ php composer.phar require yangshihe/yii2-zui "@dev"
 ```
 
 or add
 
 ```
-"yangshihe/zui": "~1";
+"yangshihe/yii2-zui": "~1";
 $ php composer.phar update
 ```
 
@@ -30,6 +30,8 @@ to the ```require``` section of your `composer.json` file.
 
 ### 配置相关
 ```php
+
+
 
 app/AppAsset.php;
 <?php
@@ -43,6 +45,56 @@ class AppAsset extends AssetBundle {
 		'yangshihe\zui\ZuiAsset',
 	];
 }
+
+### 禁止其他挂件使用bootstrap 3
+- 控制器
+class BaseController extends Controller
+{
+
+
+    public function init()
+	{
+
+		parent::init();
+
+        Yii::$app->assetManager->bundles = [
+            'yii\bootstrap\BootstrapAsset' => [
+                'css' => [],
+            ],
+            'yii\bootstrap\BootstrapPluginAsset' => [
+                'js' => [],
+            ],
+            'yii\bootstrap\BootstrapThemeAsset' => [
+                'css' => [],
+            ]
+        ];
+    }
+
+};
+
+- 配置
+config/mian.php
+
+'components' => [
+`````
+    'assetManager' => [
+        'bundles' => [
+            'yii\bootstrap\BootstrapAsset' => [
+                'css' => [],
+            ],
+            'yii\bootstrap\BootstrapPluginAsset' => [
+                'js' => [],
+            ],
+            'yii\bootstrap\BootstrapThemeAsset' => [
+                'css' => [],
+            ]
+        ]
+    
+    ]
+`````
+]
+
+- 去以上三个文件内部删除 css js 这是非常不推荐的
 
 ## Demo
 暂无
