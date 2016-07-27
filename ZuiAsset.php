@@ -27,9 +27,11 @@ class ZuiAsset extends AssetBundle {
 
         parent::init();
 
-        $this->setTheme();
-
         $this->sourcePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'assets';
+
+        $this->cssOptions = ['name' => 'zui'];
+
+        $this->setTheme();
     }
 
 
@@ -49,7 +51,9 @@ class ZuiAsset extends AssetBundle {
 
         if (!empty($themeName)) {
 
-            $theme = $themeName;
+            $cssFile = realpath($this->sourcePath . '/css/zui-theme-' . $themeName . '.css');
+
+            if(file_exists($cssFile)) $theme = $themeName;
 
         }elseif($cookies->has('theme')){
 
