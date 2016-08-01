@@ -16,9 +16,9 @@ class ActiveForm extends \yii\bootstrap\ActiveForm
     public $method = 'POST';
     public $errorCssClass = 'has-error';
     public $fieldConfig = [
-        'template' => '{label}<div class="col-sm-4">{input}{error}{hint}</div>',
+        'template' => '{label}<div class="col-sm-5">{input}{error}{hint}</div>',
         'horizontalCssClasses' => [
-            'wrapper' => 'col-sm-4',
+            'wrapper' => 'col-sm-5',
         ],
         'labelOptions' => ['class' => ' col-sm-2 control-label'],
     ];

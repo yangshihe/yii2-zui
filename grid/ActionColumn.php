@@ -10,7 +10,7 @@ class ActionColumn extends \yii\grid\ActionColumn
 {
     public $header = '动作';
 
-    public $buttonOptions = ['class' => 'btn-icon btn-xs'];
+    //public $buttonOptions = ['class' => 'btn-icon btn-xs'];
 
     public $contentOptions = ['class' => 'text-center'];
 
@@ -30,6 +30,7 @@ class ActionColumn extends \yii\grid\ActionColumn
             $this->buttons['update'] = function ($url, $model, $key) {
                 $options = array_merge([
                     'title' => Yii::t('yii', 'Update'),
+                   // 'class' => 'text-danger',
                     'aria-label' => Yii::t('yii', 'Update'),
                     'data-pjax' => '0',
                 ], $this->buttonOptions);
@@ -40,6 +41,7 @@ class ActionColumn extends \yii\grid\ActionColumn
             $this->buttons['delete'] = function ($url, $model, $key) {
                 $options = array_merge([
                     'title' => Yii::t('yii', 'Delete'),
+                    'class' => 'text-danger',
                     'aria-label' => Yii::t('yii', 'Delete'),
                     'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
                     'data-method' => 'get',
