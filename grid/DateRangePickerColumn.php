@@ -29,6 +29,7 @@ class DateRangePickerColumn extends \yangshihe\zui\grid\DataColumn
 			'pluginOptions' => [
 				'allowClear' => true,
 				'autoclose' => true,
+
 				'opens' => 'left',
 				'ranges' => [
 					"今天" => ["moment().startOf('day')", "moment()"],
