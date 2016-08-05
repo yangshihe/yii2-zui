@@ -15,13 +15,13 @@ ZUI项目网站： http://zui.sexy/ 。
 Either run
 
 ```
-$ php composer.phar require yangshihe/zui "@dev"
+$ php composer.phar require yangshihe/yii2-zui "@dev"
 ```
 
 or add
 
 ```
-"yangshihe/zui": "~1"
+"yangshihe/yii2-zui": "~1"
 ```
 
 to the ```require``` section of your `composer.json` file.
