@@ -2,7 +2,7 @@
     "name": "yangshihe/zui",
     "description": "The ZUI extension for the Yii framework",
     "keywords": ["yii2", "extension", "view", "theme", "plugin", "zui", "ZUI"],
-    "homepage": "https://github.com/yangshihe/zui",
+    "homepage": "https://github.com/yangshihe/yii2-zui",
     "type": "yii2-extension",
     "language": "php",
     "license": "BSD 3-Clause",
