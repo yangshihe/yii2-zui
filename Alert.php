@@ -14,60 +14,77 @@ namespace yangshihe\zui;
  * @author yangshihe@qq.com
  * @since 1.0
  */
+use yii\helpers\Json;
 class Alert extends \yii\bootstrap\Widget
 {
-	/**
-	 * @var array the alert types configuration for the flash messages.
-	 * This array is setup as $key => $value, where:
-	 * - $key is the name of the session flash variable
-	 * - $value is the bootstrap alert type (i.e. danger, success, info, warning)
-	 */
-	public $alertTypes = [
-		'error' => 'alert-danger',
-		'danger' => 'alert-danger',
-		'success' => 'alert-success',
-		'info' => 'alert-info',
-		'warning' => 'alert-warning',
-	];
+    /**
+     * @var array the alert types configuration for the flash messages.
+     * This array is setup as $key => $value, where:
+     * - $key is the name of the session flash variable
+     * - $value is the bootstrap alert type (i.e. danger, success, info, warning)
+     */
+    public $alertTypes = [
+        'error' => 'icon icon-exclamation-sign',
+        'danger' => 'icon icon-exclamation-sign',
+        'success' => 'icon icon-ok-sign',
+        'info' => 'icon icon-info-sign',
+        'warning' => 'icon icon-warning-sign',
+    ];
 
-	/**
-	 * @var array the options for rendering the close button tag.
-	 */
-	public $closeButton = [];
 
-	public function init()
-	{
-		parent::init();
 
-		$session = \Yii::$app->session;
-		$flashes = $session->getAllFlashes();
-		$appendCss = isset($this->options['class']) ? ' ' . $this->options['class'] : '';
+    /**
+     * @var array the options for rendering the close button tag.
+     */
+    public $closeButton = [];
 
-		foreach ($flashes as $type => $data) {
-			if (isset($this->alertTypes[$type])) {
-				$data = (array) $data;
-				foreach ($data as $i => $message) {
-					/* initialize css class for each alert box */
-					$this->options['class'] = $this->alertTypes[$type] . $appendCss;
+    public function init()
+    {
+        parent::init();
 
-					/* assign unique id to each alert box */
-					//$this->options['id'] = $this->getId() . '-' . $type . '-' . $i;
+        $session = \Yii::$app->session;
+        $flashes = $session->getAllFlashes();
+        $appendCss = isset($this->options['class']) ? ' ' . $this->options['class'] : '';
 
-					if (is_array($message)) {
+        if(!isset($this->options['placement'])) $this->options['placement'] = 'top';
 
-						$message = implode($message, '<br>');
+        foreach ($flashes as $type => $data) {
+            if (isset($this->alertTypes[$type])) {
+                $data = (array) $data;
+                foreach ($data as $i => $message) {
+                    /* initialize css class for each alert box */
+                    if($type == 'error') $type = 'warning';
 
-					}
+                    $this->options['type'] = $type ;// $this->alertTypes[$type] . $appendCss;
+                    $this->options['icon'] = $this->alertTypes[$type];
 
-					echo \yii\bootstrap\Alert::widget([
-						'body' => $message,
-						'closeButton' => $this->closeButton,
-						'options' => $this->options,
-					]);
-				}
 
-				$session->removeFlash($type);
-			}
-		}
-	}
+                    if (is_array($message)) {
+
+                        $message = implode($message, '<br>');
+
+                    }
+
+                    unset($this->options['id'],$this->options['class']);
+
+                    $this->createJs($message, $this->options);
+
+                }
+
+                $session->removeFlash($type);
+            }
+        }
+    }
+
+    public function createJs($content, $options)
+    {
+        $options = Json::encode($options);
+        $script = '
+            var flashMessage = $.zui.messager.show("' . $content . '", ' . $options .');
+            flashMessage.show();
+        ';
+
+        $this->view->registerJs($script, \yii\web\View::POS_READY);
+
+    }
 }
