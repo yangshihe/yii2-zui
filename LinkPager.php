@@ -4,9 +4,8 @@ namespace yangshihe\zui;
 
 use yii\data\Pagination;
 use yii\helpers\Html;
-use yii\widgets\LinkPager;
 
-class LinkPager extends LinkPager {
+class LinkPager extends \yii\widgets\LinkPager {
 
 
     public $options = ['class' => 'pager'];
