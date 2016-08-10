@@ -44,7 +44,7 @@ class ActionColumn extends \yii\grid\ActionColumn
                     'class' => 'text-danger',
                     'aria-label' => Yii::t('yii', 'Delete'),
                     'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
-                    'data-method' => 'get',
+                    'data-method' => 'POST',
                     'data-pjax' => '0',
                 ], $this->buttonOptions);
                 return Html::a('<i class="icon icon-trash"></i>', $url, $options);
