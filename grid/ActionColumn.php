@@ -14,6 +14,9 @@ class ActionColumn extends \yii\grid\ActionColumn
 
     public $contentOptions = ['class' => 'text-center'];
 
+    public $headerOptions = ['class' => 'action-column', 'style'=> 'min-width:100px'];
+
+
     protected function initDefaultButtons()
     {
         if (!isset($this->buttons['view'])) {
