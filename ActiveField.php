@@ -6,7 +6,7 @@ use yii\helpers\Html;
 
 /**
  * @package yangshihe.zui.ActiveField
- * @copyright DNA <http://www.Noooya.com/>
+ * @copyright dy <http://www.yangshihe.com/>
  * @version 1.0.0
  * @author yangshihe@qq.com
  * @since 1.0

@@ -5,7 +5,7 @@ use Yii;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
-class DatePicker extends \kartik\date\DatePicker
+class DateTimePicker extends \kartik\datetime\DateTimePicker
 {
 
     const CALENDAR_ICON = '<i class="icon icon-calendar"></i>';
@@ -23,8 +23,7 @@ class DatePicker extends \kartik\date\DatePicker
         $icon = '<i class="icon icon-' . ArrayHelper::remove($options, 'icon', $icon) . '"></i>';
         $title = ArrayHelper::getValue($options, 'title', '');
         if ($title !== false && empty($title)) {
-            $options['title'] = ($type === 'picker') ? Yii::t('kvdate', 'Select date') :
-                Yii::t('kvdate', 'Clear field');
+            $options['title'] = '选择时间';
         }
         return Html::tag('span', $icon, $options);
     }

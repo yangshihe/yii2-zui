@@ -12,7 +12,6 @@ use yii\helpers\Html;
 
 class DropdownColumn extends \yangshihe\zui\grid\DataColumn
 {
-    // 可配置全局 const PROMPT_LABEL = '- 不限 -'; 来显示不限选项
     /*
 
     必须配置对应 模型
@@ -29,11 +28,9 @@ class DropdownColumn extends \yangshihe\zui\grid\DataColumn
     }
 
     */
-    public $prompt = null;
+    public $prompt = '- 不限 -';
 
 	public function init() {
-
-        if(!empty(PROMPT_LABEL) && !$this->prompt) $this->prompt = PROMPT_LABEL;
 
         $attribute = $this->attribute;
 

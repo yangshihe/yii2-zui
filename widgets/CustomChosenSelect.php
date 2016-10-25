@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Icon 选择器 基于 bootstrap 3.x
+ * 这是我自定义的 请不要乱用
  *
  *@package common\widgets
  *@author yuzhiyang <yangshihe@qq.com>
@@ -25,12 +25,13 @@ $form->field($model, 'icon')->widget(\yangshihe\zui\widgets\ChosenSelect::classn
 
  */
 
-class ChosenSelect extends \yii\widgets\InputWidget
+class CustomChosenSelect extends \yii\widgets\InputWidget
 {
 
     public $multiple = true;
 
     public $items = [];
+
 
     public $pluginOptions = ['no_results_text' => '没有找到', 'allow_single_deselect' => true, 'search_contains' => true];
 
@@ -43,7 +44,7 @@ class ChosenSelect extends \yii\widgets\InputWidget
 
         $options['class'] = 'chosen-select form-control';
 
-        $options['data-placeholder'] = '请选择...';
+        $options['data-placeholder'] = '请选择模版';
 
         $options['tabindex'] = '2';
 
@@ -72,6 +73,23 @@ class ChosenSelect extends \yii\widgets\InputWidget
             if ($.fn.chosen) {
                 $("#' . $ID . '").chosen(' . $this->pluginOptions . ');
             }
+            $("#' . $ID . '").on("change",function(){
+                //console.log($.parseJSON($(this).attr("resultItem")));
+                var resultItem = $.parseJSON($(this).attr("resultItem"));
+               var v =$(this).val();
+
+                if (resultItem) {
+                    var data = "";
+                    for (i in resultItem) {
+                        if (i == v) {
+                            $("#content-display").val(resultItem[i]);
+                            break;
+                        }
+                    }
+
+
+                }
+            });
         ';
 
         $this->view->registerJs($script, \yii\web\View::POS_READY);

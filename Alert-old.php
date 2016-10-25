@@ -9,7 +9,7 @@ namespace yangshihe\zui;
 
 /**
  * @package yangshihe.zui.Alert
- * @copyright DNA <http://www.Noooya.com/>
+ * @copyright dy <http://www.yangshihe.com/>
  * @version 1.0.0
  * @author yangshihe@qq.com
  * @since 1.0
