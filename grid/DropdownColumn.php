@@ -15,9 +15,9 @@ class DropdownColumn extends \yangshihe\zui\grid\DataColumn
     /*
 
     必须配置对应 模型
-    $model->getArray()[$attribute] = [];
+    $model->findAttrArray()[$attribute] = [];
     如:
-    public function getArray()
+    public function findAttrArray()
     {
         return [
             'display' => [1 => '显示', 0 => '不显示'],
@@ -40,7 +40,7 @@ class DropdownColumn extends \yangshihe\zui\grid\DataColumn
 
             $class = get_parent_class($model);
 
-            $this->filter = (new $class)->getArray()[$attribute];
+            $this->filter = (new $class)->findAttrArray()[$attribute];
 
             $this->filterInputOptions =  ['prompt' => $this->prompt, 'class' => 'form-control input-sm'];
         }
@@ -58,9 +58,9 @@ class DropdownColumn extends \yangshihe\zui\grid\DataColumn
 
             $attribute = $this->attribute;
 
-            if(isset($model->getArray()[$attribute][$value])) {
+            if(isset($model->findAttrArray()[$attribute][$value])) {
 
-                return $model->getArray()[$attribute][$value];
+                return $model->findAttrArray()[$attribute][$value];
 
             }
             return $value;
