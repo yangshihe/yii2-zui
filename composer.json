@@ -5,8 +5,11 @@
     "homepage": "https://github.com/yangshihe/yii2-zui",
     "type": "yii2-extension",
     "language": "php",
-    "license": "BSD 3-Clause",
+    "license": "MIT",
     "minimum-stability": "stable",
+	"support": {
+	    "source": "https://github.com/yangshihe/yii2-zui"
+	},
     "authors": [
         {
             "name": "yangshihe",
@@ -16,16 +19,11 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "yiisoft/yii2": "*"
+        "yiisoft/yii2": "~2.0.0"
     },
     "autoload": {
         "psr-4": {
             "yangshihe\\zui\\": ""
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.5.1-dev"
         }
     }
 }
