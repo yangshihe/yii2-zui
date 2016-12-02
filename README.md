@@ -2,7 +2,7 @@
 
 ----------
 
-一个基于Yii2 + Bootstrap => ZUI 定制开源前端实践，帮助你快速构建现代跨屏应用。
+一个基于Yii2 + Bootstrap => ZUI 定制开源前端实践.
 
 ***第二次规划, 放弃第一版的更新***;
 
@@ -40,7 +40,6 @@ class AppAsset extends AssetBundle {
 ```
 
     public $depends = [
-		'yii\web\YiiAsset',
 		'yangshihe\zui\ZuiAsset',
 	];
 }
