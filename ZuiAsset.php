@@ -8,7 +8,8 @@ use yii\web\AssetBundle;
  * @author yangshihe@qq.com
  * @since 1.0
  */
-class ZuiAsset extends AssetBundle {
+class ZuiAsset extends AssetBundle
+{
 
 	public $css = [
 		'//cdn.bootcss.com/zui/1.5.0/css/zui.min.css',
@@ -24,7 +25,8 @@ class ZuiAsset extends AssetBundle {
 		'yii\web\YiiAsset',
 	];
 
-	public function init() {
+	public function init()
+	{
 
 		parent::init();
 
@@ -36,11 +38,12 @@ class ZuiAsset extends AssetBundle {
 	}
 
 	/*
-		    *   $this->setTheme();
-		    *  此主题不是Yii2 config['components']['view']['theme']['basePath']的视图路径,
-		    * 而是zui自身主题的切换
+    * $this->setTheme();
+    * 此主题不是Yii2 config['components']['view']['theme']['basePath']的视图路径,
+    * 而是zui自身主题的切换
 	*/
-	private function setTheme() {
+	private function setTheme()
+	{
 
 		$theme = 'default';
 
@@ -50,7 +53,7 @@ class ZuiAsset extends AssetBundle {
 
 		if (!empty($themeName)) {
 
-			$cssFile = realpath($this->sourcePath . '/css/zui-' . $themeName . '-theme.css');
+			$cssFile = realpath($this->sourcePath . '/css/theme/zui-theme-' . $themeName . '.css');
 
 			if (file_exists($cssFile)) {
 				$theme = $themeName;
@@ -62,7 +65,7 @@ class ZuiAsset extends AssetBundle {
 
 		}
 		$this->css[] = 'css/theme/zui-theme-' . $theme . '.css';
-		$this->css[] = 'css/app/zui-app-' . $theme . '.css';
+		$this->css[] = 'css/theme/zui-app-' . $theme . '.css';
 		// $this->css[] = 'css/public.css';
 
 		Yii::$app->response->cookies->add(new \yii\web\Cookie([

@@ -12,7 +12,6 @@ $(document).ready(function() {
         url, linkPath, themeHandle,themeAppHandle,
         themeReg = /zui-theme-([a-z])+\.css/i,
         themeRegApp = /zui-app-([a-z])+\.css/i;
-        var tlink;
     themeLinks.each(function(index) {
         url = $(this).attr('href');
         if (themeReg.exec(url)) {
@@ -22,7 +21,6 @@ $(document).ready(function() {
             $('#selectTheme li[data-theme=' + themeName + ']').addClass('active');
         }
         if (themeRegApp.exec(url)) {
-            tlink = themeRegApp.exec(url).input.substr(0, themeRegApp.exec(url).index);
             themeAppHandle = $(this);
         }
     });
@@ -34,7 +32,7 @@ $(document).ready(function() {
         if ($(this).data('theme') == themeName) return;
         themeName = $(this).data('theme');
         themeHandle.after('<link rel="stylesheet" href="' + linkPath + 'zui-theme-' + themeName + '.css' + '">');
-        themeAppHandle.after('<link rel="stylesheet" href="' + tlink + 'zui-app-' + themeName + '.css' + '">');
+        themeAppHandle.after('<link rel="stylesheet" href="' + linkPath + 'zui-app-' + themeName + '.css' + '">');
         $.ajax({
                 url: '',
                 cache: false,
@@ -66,21 +64,38 @@ $(document).ready(function() {
         loadingIcon: 'icon-spinner'
     };
     var showLoading = new $.zui.ModalTrigger(showLoadingOption);
+    var isShowLoading = false;
     //ajax 提交 后面要是不集成 可以使用 global: false,来决定
     $.ajaxSetup({
-        beforeSend: function(xhr) {
-            $('[type=submit]').attr('disabled', true).addClass('disabled');
-            showLoading.show();
+        beforeSend: function(xhr, event) {
+            if (event.url.indexOf('captcha') == -1) {
+               $('[type=submit]').attr('disabled', true).addClass('disabled');
+                showLoading.show();
+                isShowLoading = true;
+            }
         },
         complete: function() {
             $('[type=submit]').attr('disabled', false).removeClass('disabled');
-            showLoading.close();
+            isShowLoading ? showLoading.close() : null;
         }
     });
     //普通表单防止多次提交
     $('form').on('submit', function(e) {
         $('[type=submit]').attr('disabled', true).addClass('disabled');
-        showLoading.show();
+        var that = $(this);
+        setTimeout(function() {
+            var issend = 1;
+            that.find('.form-group').each(function(index, el) {
+                if ($(this).hasClass('has-error')) {
+                    //showLoading.close();
+                    $('[type=submit]').attr('disabled', false).removeClass('disabled');
+                    issend = 0;
+                    return;
+                }
+            });
+            if (issend) showLoading.show();
+        },1000);
+
     });
 
 
