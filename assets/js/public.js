@@ -9,7 +9,7 @@ $(document).ready(function() {
      */
     var themeName = 'default',
         themeLinks = $('head').find('link[name="zui"]'),
-        url, linkPath, themeHandle,themeAppHandle,
+        url, linkPath, themeHandle, themeAppHandle,
         themeReg = /zui-theme-([a-z])+\.css/i,
         themeRegApp = /zui-app-([a-z])+\.css/i;
     themeLinks.each(function(index) {
@@ -51,51 +51,36 @@ $(document).ready(function() {
             });
     });
 
-    var showLoadingOption = {
-        showHeader: false,
-        remote: '',
-        waittime: 0,
-        position: 'center',
-        backdrop: 'static',
-        keyboard: false,
-        size: 'sm',
-        width: '0px',
-        id: 'loading',
-        loadingIcon: 'icon-spinner'
-    };
-    var showLoading = new $.zui.ModalTrigger(showLoadingOption);
+    $('body').append('<div class="loading" id="loading"><i class="icon icon-spin icon-spinner"></i></div>');
+    var showLoading = $('#loading');
     var isShowLoading = false;
-    //ajax 提交 后面要是不集成 可以使用 global: false,来决定
+    //ajax
     $.ajaxSetup({
         beforeSend: function(xhr, event) {
             if (event.url.indexOf('captcha') == -1) {
-               $('[type=submit]').attr('disabled', true).addClass('disabled');
+                $('[type=submit]').attr('disabled', true).addClass('disabled');
                 showLoading.show();
                 isShowLoading = true;
             }
         },
         complete: function() {
-            $('[type=submit]').attr('disabled', false).removeClass('disabled');
-            isShowLoading ? showLoading.close() : null;
+            $('[type=submit]').removeAttr('disabled').removeClass('disabled');
+            isShowLoading ? showLoading.hide() : null;
         }
     });
-    //普通表单防止多次提交
-    $('form').on('submit', function(e) {
-        $('[type=submit]').attr('disabled', true).addClass('disabled');
-        var that = $(this);
-        setTimeout(function() {
-            var issend = 1;
-            that.find('.form-group').each(function(index, el) {
-                if ($(this).hasClass('has-error')) {
-                    //showLoading.close();
-                    $('[type=submit]').attr('disabled', false).removeClass('disabled');
-                    issend = 0;
-                    return;
-                }
-            });
-            if (issend) showLoading.show();
-        },1000);
 
+    //非ajax
+    $('form').on('beforeValidate', function(e) {
+        $('[type=submit]').attr('disabled', true).addClass('disabled');
+    });
+    $('form').on('afterValidate', function(e) {
+        if (cheched = $(this).data('yiiActiveForm').validated == false) {
+            $('[type=submit]').removeAttr('disabled').removeClass('disabled');
+        }
+    });
+    $('form').on('beforeSubmit', function(e) {
+        $('[type=submit]').attr('disabled', true).addClass('disabled');
+        showLoading.show();
     });
 
 

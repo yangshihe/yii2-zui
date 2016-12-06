@@ -66,7 +66,7 @@ class ZuiAsset extends AssetBundle
 		}
 		$this->css[] = 'css/theme/zui-theme-' . $theme . '.css';
 		$this->css[] = 'css/theme/zui-app-' . $theme . '.css';
-		// $this->css[] = 'css/public.css';
+		$this->css[] = 'css/public.css';
 
 		Yii::$app->response->cookies->add(new \yii\web\Cookie([
 			'name' => 'theme',
