@@ -3,10 +3,10 @@ namespace yangshihe\zui\widgets;
 
 /**
  * @package
- * @copyright dy
- * @version 1.0.0
+ * @copyright dy yangshihe@qq.com
+ * @version 2.0.0
  * @author yangshihe@qq.com
- * @since 1.0
+ * @since 2.0
  */
 
 /**

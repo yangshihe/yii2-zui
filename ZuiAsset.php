@@ -13,7 +13,6 @@ class ZuiAsset extends AssetBundle
 
 	public $css = [
 		'//cdn.bootcss.com/zui/1.5.0/css/zui.min.css',
-
 	];
 
 	public $js = [
@@ -29,11 +28,8 @@ class ZuiAsset extends AssetBundle
 	{
 
 		parent::init();
-
 		$this->sourcePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'assets';
-
 		$this->cssOptions = ['name' => 'zui'];
-
 		$this->setTheme();
 	}
 
@@ -46,28 +42,28 @@ class ZuiAsset extends AssetBundle
 	{
 
 		$theme = 'default';
-
 		$themeName = Yii::$app->request->get('theme');
-
 		$cookies = Yii::$app->request->cookies;
-
 		if (!empty($themeName)) {
-
 			$cssFile = realpath($this->sourcePath . '/css/theme/zui-theme-' . $themeName . '.css');
-
 			if (file_exists($cssFile)) {
 				$theme = $themeName;
 			}
+			if (Yii::$app->request->isAjax) {
+				$this->setThemeCookie($theme);
+				Yii::$app->end();
+			}
 
 		} elseif ($cookies->has('theme')) {
-
 			$theme = $cookies['theme'];
-
 		}
 		$this->css[] = 'css/theme/zui-theme-' . $theme . '.css';
 		$this->css[] = 'css/theme/zui-app-' . $theme . '.css';
 		$this->css[] = 'css/public.css';
+		$this->setThemeCookie($theme);
+	}
 
+	public function setThemeCookie($theme) {
 		Yii::$app->response->cookies->add(new \yii\web\Cookie([
 			'name' => 'theme',
 			'value' => $theme,

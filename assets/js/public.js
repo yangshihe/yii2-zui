@@ -4,52 +4,7 @@
  */
 
 $(document).ready(function() {
-    /*
-     *  动态加载 theme css
-     */
-    var themeName = 'default',
-        themeLinks = $('head').find('link[name="zui"]'),
-        url, linkPath, themeHandle, themeAppHandle,
-        themeReg = /zui-theme-([a-z])+\.css/i,
-        themeRegApp = /zui-app-([a-z])+\.css/i;
-    themeLinks.each(function(index) {
-        url = $(this).attr('href');
-        if (themeReg.exec(url)) {
-            themeHandle = $(this);
-            linkPath = themeReg.exec(url).input.substr(0, themeReg.exec(url).index);
-            themeName = themeReg.exec(url)[0].replace('zui-theme-', '').replace('.css', '');
-            $('#selectTheme li[data-theme=' + themeName + ']').addClass('active');
-        }
-        if (themeRegApp.exec(url)) {
-            themeAppHandle = $(this);
-        }
-    });
 
-    $(document).on('click', '#selectTheme li', function(event) {
-        event.preventDefault();
-        $(this).siblings('li').removeClass('active');
-        $(this).addClass('active');
-        if ($(this).data('theme') == themeName) return;
-        themeName = $(this).data('theme');
-        themeHandle.after('<link rel="stylesheet" href="' + linkPath + 'zui-theme-' + themeName + '.css' + '">');
-        themeAppHandle.after('<link rel="stylesheet" href="' + linkPath + 'zui-app-' + themeName + '.css' + '">');
-        $.ajax({
-                url: '',
-                cache: false,
-                type: 'GET',
-                data: { theme: themeName }
-            })
-            .done(function() {
-                setTimeout(function() {
-                    var oldTheme = themeHandle;
-                    var oldThemeAppHandle = themeAppHandle;
-                    themeHandle = oldTheme.next();
-                    themeAppHandle = oldThemeAppHandle.next();
-                    oldTheme.remove();
-                    oldThemeAppHandle.remove();
-                }, 1000);
-            });
-    });
 
     $('body').append('<div class="loading" id="loading"><i class="icon icon-spin icon-spinner"></i></div>');
     var showLoading = $('#loading');
