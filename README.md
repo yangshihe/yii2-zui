@@ -34,17 +34,39 @@ to the ```require``` section of your `composer.json` file.
 ```php
 
 app/AppAsset.php;
-<?php
-....code...
-class AppAsset extends AssetBundle {
 
-```
+class AppAsset extends AssetBundle {
 
     public $depends = [
 		'yangshihe\zui\ZuiAsset',
 	];
 }
+```
+控制器 取消原生态的 BootstrapAsset
+```php
+    public function init()
+    {
 
+        parent::init();
+
+        $this->layout = 'main';
+
+        Yii::$app->assetManager->bundles = [
+            'yii\bootstrap\BootstrapAsset' => [
+                'css' => [],
+            ],
+            'yii\bootstrap\BootstrapPluginAsset' => [
+                'js' => [],
+            ],
+            'yii\bootstrap\BootstrapThemeAsset' => [
+                'css' => [],
+            ]
+        ];
+        $this->getView()->title = Yii::$app->params['sitename'];
+
+        $this->registerAppAsset();
+    }
+```
 ## Demo
 暂无
 
