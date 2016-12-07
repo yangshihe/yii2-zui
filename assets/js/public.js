@@ -14,7 +14,7 @@ $(document).ready(function() {
         beforeSend: function(xhr, event) {
             if (event.url.indexOf('captcha') == -1) {
                 $('[type=submit]').attr('disabled', true).addClass('disabled');
-                showLoading.show();
+                showLoading.show('slow');
                 isShowLoading = true;
             }
         },

@@ -4,6 +4,7 @@
 
 #header {
     padding: 12px 20px 0;
+    background: #720b0b!important;
 }
 
 #topbar {
@@ -83,7 +84,7 @@
     padding: 7px 15px;
     color: #fff;
     font-size: 14px;
-    background: #c9302c;
+    background: #a10f0f;
     /*1*/
     -webkit-box-shadow: 0 -3px 3px rgba(0, 0, 0, 0.10);
     box-shadow: 0 -3px 3px rgba(0, 0, 0, 0.10);
@@ -162,18 +163,18 @@
 #modulemenu .nav>li>.dropdown>a {
     display: block;
     padding: 0 7px;
-    color: #d9534f
+    color: #720b0b
 }
 
 #modulemenu .nav>li>a:hover,
 #modulemenu .nav>li>.dropdown>a:hover {
     background: #d1d1d1;
-    color: #d9534f
+    color: #720b0b
 }
 
 #modulemenu .nav>li.active>a,
 #modulemenu .nav>li.active>a:hover {
-    color: #c9302c;
+    color: #720b0b;
     font-weight: bold
 }
 

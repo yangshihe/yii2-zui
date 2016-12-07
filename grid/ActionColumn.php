@@ -10,7 +10,7 @@ class ActionColumn extends \yii\grid\ActionColumn
 {
     public $header = '动作';
 
-    public $template = '{view}&nbsp;&nbsp;{update}&nbsp;&nbsp; {delete}';
+    public $template = '{view}&nbsp;&nbsp;{update}&nbsp;&nbsp;{delete}';
 
     public $contentOptions = ['class' => 'text-center'];
 

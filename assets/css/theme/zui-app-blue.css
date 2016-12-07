@@ -4,6 +4,7 @@
 
 #header {
     padding: 12px 20px 0;
+    background: #145ccd!important;
 }
 
 #topbar {
@@ -36,7 +37,6 @@
 #topnav>.dropdown.open,
 #topnav>a:hover {
     background: #0288d1
-    /*1*/
 }
 
 #topnav>a,
@@ -81,23 +81,20 @@
     padding: 7px 15px;
     color: #fff;
     font-size: 14px;
-    background: #0288d1;
-    /*1*/
+    background: #2a74ea;
     -webkit-box-shadow: 0 -3px 3px rgba(0, 0, 0, 0.10);
     box-shadow: 0 -3px 3px rgba(0, 0, 0, 0.10)
 }
 
 #mainmenu .nav>li>a:hover {
-    background-color: #0279b3;
-    /*1*/
+    background-color: #4284ec;
     color: #fff;
     box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.2)
 }
 
 #mainmenu .nav>li.active>a {
     background-color: #e5e5e5;
-    color: #039be5;
-    /*1*/
+    color: #145ccd;
     font-weight: bold
 }
 
@@ -154,18 +151,18 @@
 #modulemenu .nav>li>.dropdown>a {
     display: block;
     padding: 0 7px;
-    color: #039be5
+    color: #145ccd
 }
 
 #modulemenu .nav>li>a:hover,
 #modulemenu .nav>li>.dropdown>a:hover {
     background: #d1d1d1;
-    color: #039be5
+    color: #145ccd
 }
 
 #modulemenu .nav>li.active>a,
 #modulemenu .nav>li.active>a:hover {
-    color: #039be5;
+    color: #145ccd;
     font-weight: bold
 }
 

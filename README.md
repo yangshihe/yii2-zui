@@ -49,8 +49,6 @@ class AppAsset extends AssetBundle {
 
         parent::init();
 
-        $this->layout = 'main';
-
         Yii::$app->assetManager->bundles = [
             'yii\bootstrap\BootstrapAsset' => [
                 'css' => [],
@@ -62,9 +60,7 @@ class AppAsset extends AssetBundle {
                 'css' => [],
             ]
         ];
-        $this->getView()->title = Yii::$app->params['sitename'];
 
-        $this->registerAppAsset();
     }
 ```
 ## Demo
