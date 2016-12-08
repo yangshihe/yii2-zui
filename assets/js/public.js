@@ -8,19 +8,17 @@ $(document).ready(function() {
 
     $('body').append('<div class="loading" id="loading"><i class="icon icon-spin icon-spinner"></i></div>');
     var showLoading = $('#loading');
-    var isShowLoading = false;
     //ajax
     $.ajaxSetup({
         beforeSend: function(xhr, event) {
             if (event.url.indexOf('captcha') == -1) {
                 $('[type=submit]').attr('disabled', true).addClass('disabled');
                 showLoading.show('slow');
-                isShowLoading = true;
             }
         },
         complete: function() {
             $('[type=submit]').removeAttr('disabled').removeClass('disabled');
-            isShowLoading ? showLoading.hide() : null;
+            showLoading.hide()
         }
     });
 
