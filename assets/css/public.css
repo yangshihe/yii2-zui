@@ -18,3 +18,5 @@
   text-align: center;
   width: 80px;
 }
+
+.required:after {content:''; position:relative;}
