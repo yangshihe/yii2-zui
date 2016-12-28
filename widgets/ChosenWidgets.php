@@ -27,6 +27,7 @@ use yii\helpers\Url;
 use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\base\Widget;
+use yii\base\InvalidCallException;
 
 class ChosenWidgets extends Widget
 {

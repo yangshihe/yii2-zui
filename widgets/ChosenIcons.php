@@ -46,6 +46,8 @@ class ChosenIcons extends \yii\widgets\InputWidget
 
         $options['tabindex'] = '2';
 
+        $options['data-value'] = Html::getAttributeValue($this->model, $this->attribute);
+
         $this->options =  ArrayHelper::merge($options, $this->options);
 
         $this->pluginOptions = Json::encode($this->pluginOptions);
@@ -72,6 +74,5 @@ class ChosenIcons extends \yii\widgets\InputWidget
         $this->view->registerJs($script, \yii\web\View::POS_READY);
 
     }
-
 
 }
