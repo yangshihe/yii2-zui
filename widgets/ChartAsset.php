@@ -14,6 +14,7 @@ class ChartAsset extends AssetBundle {
 	];
 
 	public $js = [
+        '//cdn.bootcss.com/zui/1.5.0/lib/colorset.js/colorset.min.js',
         '//cdn.bootcss.com/zui/1.5.0/lib/chart/zui.chart.min.js'
 	];
 

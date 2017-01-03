@@ -13,12 +13,10 @@ $(document).ready(function() {
         beforeSend: function(xhr, event) {
             if (event.url.indexOf('captcha') == -1) {
                 $('[type=submit]').attr('disabled', true).addClass('disabled');
-                showLoading.show('slow');
             }
         },
         complete: function() {
             $('[type=submit]').removeAttr('disabled').removeClass('disabled');
-            showLoading.hide()
         }
     });
 

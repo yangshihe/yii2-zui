@@ -1,22 +1,23 @@
 ﻿/*加载*/
 .loading {
     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: none;
     z-index: 9999;
-    left: 50%;
-    top: 35%;
-    margin-left: -40px;
-    width: 80px;
-    height: 56px;
+    background: rgba(0,0,0,.3)
 }
 
 .loading .icon {
-  color: rgba(0,0,0,.3);
+  color: #fff;
   display: block;
   font-size: 56px;
+  left: 50%;
+  margin-left: -40px;
   position: absolute;
   text-align: center;
+  top: 35%;
   width: 80px;
 }
-
-.required:after {content:''; position:relative;}

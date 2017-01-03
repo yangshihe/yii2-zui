@@ -19,7 +19,8 @@ DEMO
 
 form view:
 use yangshihe\zui\widgets\ChartWidgets;
-echo ChartWidgets::widget(['message' => 'Good morning']) ?>
+$data = json_encode(array(......));
+echo ChartWidgets::widget(['type' => 'lineChart', 'data' => $data]);
 
  */
 
@@ -35,31 +36,26 @@ class ChartWidgets extends Widget
 {
     public $type = 'lineChart'; // lineChart, pieChart doughnutChart, barChart; pieChart default lineChart
     public $data = [];
-    public $options = [];
+    public $options = ['width' => '400', 'height' => '300'];
     public $pluginOptions = [];
-    public $clickCallBack = ''; //点击回调事件
 
     //默认配置
     private $_pluginOptions = [];
+
 
     public function init() {
 
         if (!isset($this->options['id'])) {
             $this->options['id'] = 'chart' .  $this->getId();
         }
-
         if (!in_array($this->type, ['lineChart', 'pieChart', 'doughnutChart', 'barChart'])) {
             throw new InvalidConfigException("type must in: lineChart, doughnutChart, barChart");
         }
-
         parent::init();
-
-        $this->options =  ArrayHelper::merge($options, $this->options);
-
+        call_user_func([$this, $this->type]);
+        $this->pluginOptions =  ArrayHelper::merge($this->_pluginOptions, $this->pluginOptions);
         $this->pluginOptions = Json::encode($this->pluginOptions);
-
         $this->data = Json::encode($this->data);
-
         ChartAsset::register($this->getView());
 
     }
@@ -67,23 +63,32 @@ class ChartWidgets extends Widget
     public function run()
     {
         parent::run();
-        echo Html::listBox($this->name, $this->selection, $this->items, $this->options);
+        echo Html::tag('canvas','', $this->options);
         $this->createJs();
+
     }
 
     public function createJs()
     {
         $id = $this->options['id'];
+        $wd = '';
+        if (isset($this->options['width']) && is_numeric($this->options['width']) && $this->options['width'] > 0) {
+            $wd = 'if (width > ' . $this->options['width']. ') obj.attr("width", width);';
+        }
 
-        $script = '$("' . $id . '").lineChart(data, options);';
+        //使用函数加参数调用////
+        $script = '(function(obj){
+            var width = obj.parent().width();
+            '. $wd .'
+            obj.' . $this->type . '( ' . $this->data . ', ' . $this->pluginOptions . ');
+        })($("#' . $id . '"));';
 
         $this->view->registerJs($script, \yii\web\View::POS_READY);
-
     }
 
     private function lineChart()
     {
-        // null
+        $this->_pluginOptions = [];
     }
 
     private function pieChart()
@@ -99,6 +104,7 @@ class ChartWidgets extends Widget
     private function barChart()
     {
         $this->_pluginOptions = ['responsive' => false];
+
     }
 
 }
