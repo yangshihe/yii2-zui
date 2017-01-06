@@ -41,7 +41,7 @@ class ZuiAsset extends AssetBundle
 	private function setTheme()
 	{
 
-		$theme = 'default';
+		$theme = 'green';
 		$themeName = Yii::$app->request->get('theme');
 		$cookies = Yii::$app->request->cookies;
 		if (!empty($themeName)) {

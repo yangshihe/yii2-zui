@@ -40,10 +40,9 @@ class Theme extends Widget
         'id' => 'selectTheme'
     ];
     public $themes = [
-        'default' => '默认',
+        'green' => '绿色',
         'blue' => '蓝色',
         'red' => '红色',
-        'green' => '绿色',
         'purple' => '紫色',
         'brown' => '棕色',
         'yellow' => '黄色',
