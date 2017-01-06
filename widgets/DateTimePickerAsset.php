@@ -18,6 +18,10 @@ class DateTimePickerAsset extends AssetBundle {
 		'//cdn.bootcss.com/zui/1.5.0/lib/datetimepicker/datetimepicker.min.js'
 	];
 
+    public $depends = [
+        'yii\web\JqueryAsset'
+    ];
+
 
 
 

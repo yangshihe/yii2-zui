@@ -18,6 +18,10 @@ class ChosenAsset extends AssetBundle {
         '//cdn.bootcss.com/zui/1.5.0/lib/chosen/chosen.min.js'
 	];
 
+    public $depends = [
+        'yii\web\JqueryAsset'
+    ];
+
 
 
 
