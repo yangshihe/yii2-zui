@@ -19,7 +19,9 @@ class ChosenIconsAsset extends AssetBundle {
 	];
 
     public $depends = [
-        'yangshihe\zui\widgets\ChosenAsset',
+        'yangshihe\zui\ZuiAsset',
+        'yangshihe\zui\widgets\ChosenAsset'
+
     ];
 
 
