@@ -20,6 +20,7 @@ class ChartAsset extends AssetBundle {
 
     public $depends = [
         'yii\web\JqueryAsset',
+        'yangshihe\zui\ZuiAsset',
     ];
 
 }

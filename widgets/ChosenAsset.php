@@ -20,10 +20,7 @@ class ChosenAsset extends AssetBundle {
 
     public $depends = [
         'yii\web\JqueryAsset',
-        'yangshihe\zui\ZuiAsset'
+        'yangshihe\zui\ZuiAsset',
     ];
-
-
-
 
 }
