@@ -11,11 +11,11 @@ use yii\web\AssetBundle;
 class DateTimePickerAsset extends AssetBundle {
 
 	public $css = [
-		'//cdn.bootcss.com/zui/1.5.0/lib/datetimepicker/datetimepicker.min.css'
+		'//cdn.bootcss.com/zui/1.6.0/lib/datetimepicker/datetimepicker.min.css'
 	];
 
 	public $js = [
-		'//cdn.bootcss.com/zui/1.5.0/lib/datetimepicker/datetimepicker.min.js'
+		'//cdn.bootcss.com/zui/1.6.0/lib/datetimepicker/datetimepicker.min.js'
 	];
 
     public $depends = [

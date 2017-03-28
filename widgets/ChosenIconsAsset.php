@@ -11,11 +11,11 @@ use yii\web\AssetBundle;
 class ChosenIconsAsset extends AssetBundle {
 
 	public $css = [
-        '//cdn.bootcss.com/zui/1.5.0/lib/chosenicons/zui.chosenicons.min.css'
+        '//cdn.bootcss.com/zui/1.6.0/lib/chosenicons/zui.chosenicons.min.css'
 	];
 
 	public $js = [
-        '//cdn.bootcss.com/zui/1.5.0/lib/chosenicons/zui.chosenicons.min.js'
+        '//cdn.bootcss.com/zui/1.6.0/lib/chosenicons/zui.chosenicons.min.js'
 	];
 
     public $depends = [

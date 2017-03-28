@@ -11,11 +11,11 @@ use yii\web\AssetBundle;
 class ChosenAsset extends AssetBundle {
 
 	public $css = [
-        '//cdn.bootcss.com/zui/1.5.0/lib/chosen/chosen.min.css'
+        '//cdn.bootcss.com/zui/1.6.0/lib/chosen/chosen.min.css'
 	];
 
 	public $js = [
-        '//cdn.bootcss.com/zui/1.5.0/lib/chosen/chosen.min.js'
+        '//cdn.bootcss.com/zui/1.6.0/lib/chosen/chosen.min.js'
 	];
 
     public $depends = [
