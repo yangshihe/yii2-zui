@@ -12,11 +12,11 @@ class ZuiAsset extends AssetBundle
 {
 
 	public $css = [
-		'//cdn.bootcss.com/zui/1.5.0/css/zui.min.css',
+		'//cdn.bootcss.com/zui/1.6.0/css/zui.min.css',
 	];
 
 	public $js = [
-		'//cdn.bootcss.com/zui/1.5.0/js/zui.min.js',
+		'//cdn.bootcss.com/zui/1.6.0/js/zui.min.js',
 		'js/public.js',
 	];
 
