@@ -51,17 +51,21 @@ class ZuiAsset extends AssetBundle
 				$theme = $themeName;
 			}
 			if (Yii::$app->request->isAjax) {
+                Yii::$app->response->cookies->remove('theme');
 				$this->setThemeCookie($theme);
 				Yii::$app->end();
 			}
 
-		} elseif ($cookies->has('theme')) {
-			$theme = $cookies['theme'];
 		}
+        if ($cookies->has('theme')) {
+            $theme = $cookies->getValue('theme');
+		} else {
+            $this->setThemeCookie($theme);
+        }
 		$this->css[] = 'css/theme/zui-theme-' . $theme . '.css';
 		$this->css[] = 'css/theme/zui-app-' . $theme . '.css';
 		$this->css[] = 'css/public.css';
-		$this->setThemeCookie($theme);
+
 	}
 
 	public function setThemeCookie($theme) {
